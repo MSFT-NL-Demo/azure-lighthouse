@@ -1,37 +1,44 @@
-## Welcome to GitHub Pages
+# How to make use of Azure Lighthouse
+## Pre-requisites
 
-You can use the [editor on GitHub](https://github.com/it-delivery/azure-lighthouse/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+- [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1)
+- [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#winget)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Architecture
 
-### Markdown
+See article on Microsoft Docs [here](https://docs.microsoft.com/en-us/azure/lighthouse/concepts/architecture)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Deployment steps
 
-```markdown
-Syntax highlighted code block
+### The Service Provider
+Must provide
+- their tenant ID
+- the Object ID of the Security Group containing the human and non-human identities that will control the customer subscription
+- The role definition id they want to be assigned on the customer subscription
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```powershell
+(Get-AzRoleDefinition -Name Contributor).id
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### The customer of the Managed Services Provider
+1. Clone this repo locally and change the working directory to the root of the git repo.
+2. Alter the file ```managedServices.params.json``` with the details provided by the MSP.
 
-### Jekyll Themes
+- Replace the string `11111111-1111-1111-1111-111111111111` with the Tenant Id provided by the MSP
+- Replace the string `22222222-2222-2222-2222-222222222222` with the Object Id of the Security Group in the MSP tenant that you will allow to manage your subscription.
+- Replace the string `33333333-3333-3333-3333-333333333333` with the Role Definition Id provided by the MSP as in their tenant.
+- Replace the string `LighthouseAdminAgents` with the Name of the Security Group in the MSP tenant that you will allow to manage your subscription.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/it-delivery/azure-lighthouse/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+3. Connect to Azure by running ```Connect-AzAccount```
+4. Select the right subscription to give permissions to the MSP
 
-### Support or Contact
+```powershell
+Get-AzSubscription
+Select-AzSubscription <guid>
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+5. Deploy the bicep template with the updated parameters file
+
+```powershell
+New-AzDeployment -TemplateFile .\templates\managedServices.template.bicep -TemplateParameterFile .\templates\managedServices.params.json -Location westeurope -Verbose
+```
