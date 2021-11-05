@@ -1,12 +1,35 @@
-# How to make use of Azure Lighthouse
+# What is Azure Lighthouse?
+
+Azure Lighthouse enables multi-tenant management with scalability, higher automation, and enhanced governance across resources.
+
+With Azure Lighthouse, service providers can deliver managed services using [comprehensive and robust tooling built into the Azure platform](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/architecture.md). Customers maintain control over who has access to their tenant, which resources they can access, and what actions can be taken. [Enterprise organizations](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/enterprise.md) managing resources across multiple tenants can also use Azure Lighthouse to streamline management tasks.
+
+[Cross-tenant management experiences](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/cross-tenant-management-experience.md) lets you work more efficiently with Azure services like [Azure Policy](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/policy-at-scale.md), [Azure Sentinel](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/manage-sentinel-workspaces.md), [Azure Arc](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/manage-hybrid-infrastructure-arc.md), and many more. Users can see what changes were made and by whom [in the activity log](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/view-service-provider-activity.md), which is stored in the customer's tenant and can be viewed by users in the managing tenant.
+
+![Overview diagram of Azure Lighthouse](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/lighthouse/media/azure-lighthouse-overview.jpg?raw=true)
+    
+
+## Capabilities
+
+Azure Lighthouse includes multiple ways to help streamline engagement and management:
+
+- **Azure delegated resource management**: [Manage your customers' Azure resources securely from within your own tenant](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/architecture.md), without having to switch context and control planes. Customer subscriptions and resource groups can be delegated to specified users and roles in the managing tenant, with the ability to remove access as needed.
+- **New Azure portal experiences**: View cross-tenant information in the [**My customers** page](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/view-manage-customers.md) in the Azure portal. A corresponding [**Service providers** page](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/view-manage-service-providers.md) lets customers view and manage their service provider access.
+- **Azure Resource Manager templates**: Use ARM templates to [onboard delegated customer resources](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/onboard-customer.md) and [perform cross-tenant management tasks](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/samples/index.md).
+- **Managed Service offers in Azure Marketplace**: [Offer your services to customers](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/managed-services-offers.md) through private or public offers, and automatically onboard them to Azure Lighthouse.
+
+
+# Pricing and availability
+
+There are no additional costs associated with using Azure Lighthouse to manage Azure resources. Any Azure customer or partner can use Azure Lighthouse.
+
+
+# How to make use of Azure Lighthouse?
+
 ## Pre-requisites
 
 - [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1)
 - [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#winget)
-
-## Architecture
-
-See article on Microsoft Docs [here](https://docs.microsoft.com/en-us/azure/lighthouse/concepts/architecture)
 
 ## Deployment steps
 
