@@ -6,7 +6,7 @@ With Azure Lighthouse, service providers can deliver managed services using [com
 
 [Cross-tenant management experiences](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/concepts/cross-tenant-management-experience.md) lets you work more efficiently with Azure services like [Azure Policy](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/policy-at-scale.md), [Azure Sentinel](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/manage-sentinel-workspaces.md), [Azure Arc](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/manage-hybrid-infrastructure-arc.md), and many more. Users can see what changes were made and by whom [in the activity log](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/lighthouse/how-to/view-service-provider-activity.md), which is stored in the customer's tenant and can be viewed by users in the managing tenant.
 
-![Overview diagram of Azure Lighthouse](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/lighthouse/media/azure-lighthouse-overview.jpg?raw=true)
+![Overview diagram of Azure Lighthouse](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/main/articles/lighthouse/media/azure-lighthouse-overview.jpg)
     
 
 ## Capabilities
@@ -45,10 +45,10 @@ Must provide:
 ### The customer of the Managed Services Provider
 1. Clone this repo locally and change the working directory to the root of the git repo.
 ```bash
-git clone git@github.com:it-delivery/azure-lighthouse.git
+git clone git@github.com:MSFT-NL-Demo/azure-lighthouse.git
 cd azure-lighthouse
 ```
-2. Alter the file [managedServices.params.json](https://github.com/it-delivery/azure-lighthouse/blob/main/templates/managedServices.params.json) with the details provided by the MSP.
+2. Alter the file [managedServices.params.json](https://github.com/MSFT-NL-Demo/azure-lighthouse/blob/main/templates/managedServices.params.json) with the details provided by the MSP.
 
     - Replace the string `11111111-1111-1111-1111-111111111111` with the Tenant Id provided by the MSP
     - Replace the string `22222222-2222-2222-2222-222222222222` with the Object Id of the Security Group in the MSP tenant that you will allow to manage your subscription.
